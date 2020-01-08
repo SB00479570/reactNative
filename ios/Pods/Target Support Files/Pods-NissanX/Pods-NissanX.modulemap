@@ -1,0 +1,6 @@
+module Pods_NissanX {
+  umbrella header "Pods-NissanX-umbrella.h"
+
+  export *
+  module * { export * }
+}

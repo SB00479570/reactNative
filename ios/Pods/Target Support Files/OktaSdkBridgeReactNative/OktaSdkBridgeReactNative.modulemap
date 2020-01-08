@@ -1,0 +1,6 @@
+module OktaSdkBridgeReactNative {
+  umbrella header "OktaSdkBridgeReactNative-umbrella.h"
+
+  export *
+  module * { export * }
+}

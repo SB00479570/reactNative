@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
+options: "f807ef0cd00e5920a5ade962a4ae2d13"
+build_time: [1578511166, 213398000]
+inputs:
+  "/Users/subhrabasu/reactNative/node_modules/@okta/okta-react-native/ios/OktaSdkBridge.swift": [1576177810, 0]
+  "/Users/subhrabasu/reactNative/node_modules/@okta/okta-react-native/ios/OktaSdkConstant.swift": [1576177810, 0]
+  "/Users/subhrabasu/reactNative/node_modules/@okta/okta-react-native/ios/OktaSDKError.swift": [1576177810, 0]
