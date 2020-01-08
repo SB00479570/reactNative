@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from 'react-navigation-stack';
 
 import Toolbar from '../components/Toolbar';
 
@@ -17,7 +15,7 @@ export default class Home extends Component {
                 </View>
                 <View style={styles.container3}>
                     <View style={styles.headingContainer}>
-                        <Text style={styles.heading}>Home Screen</Text>
+                        <Text style={styles.heading}>NissanX</Text>
                         <Text style={styles.heading}>message here</Text>
                         <View>
                             <Text style={styles.subHeading}>Lorem ipsum</Text>
@@ -45,8 +43,7 @@ export default class Home extends Component {
                         </View>
                     </View>
                 </View>
-            </View>,
-            <Toolbar key='toolbar' />
+            </View>
         ]
     }
 }

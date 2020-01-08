@@ -1,64 +1,93 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from 'react-navigation-stack';
 
 import Toolbar from '../components/Toolbar';
 
-export default function Dashboard() {
+export default class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const [showSheet, setShowSheet] = useState(false);
+    this.state = { showSheet: false };
+  }
 
-  return (
-    <View style={styles.container}>
+  componentDidMount() {
+    fetch('http://3.115.184.75:8099/v1/customer/vehicles', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer NGID_1010',
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        alert('success');
+        console.log('responseJson', responseJson);
+        //return responseJson.movies;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  setShowSheet = (flag) => {
+    this.setState({ showSheet: flag });
+  }
+
+  render() {
+
+    //const[showSheet, setShowSheet] = useState(false);
+    const { showSheet } = this.state;
+
+    return (
+      <View style={styles.container}>
 
 
-      <View style={styles.container1}>
-        <View style={showSheet ? styles.headingCompressed : styles.heading}>
-          <Text style={showSheet ? styles.headingTitleCompressed : styles.headingTitle}>Good afternoon,</Text>
-          <Text style={showSheet ? styles.headingTitleCompressed : styles.headingTitle}>Matthew</Text>
-          <View style={showSheet ? styles.batteryViewCompressed : styles.batteryView}>
-            <Image source={require('../assets/battery_half_fill.png')} style={styles.battery} />
-            <Text style={styles.batteryTitle1}>Battery 90%</Text>
-            <Text style={styles.batteryTitle2}>Range 270km</Text>
+        <View style={styles.container1}>
+          <View style={showSheet ? styles.headingCompressed : styles.heading}>
+            <Text style={showSheet ? styles.headingTitleCompressed : styles.headingTitle}>Good afternoon,</Text>
+            <Text style={showSheet ? styles.headingTitleCompressed : styles.headingTitle}>Matthew</Text>
+            <View style={showSheet ? styles.batteryViewCompressed : styles.batteryView}>
+              <Image source={require('../assets/battery_half_fill.png')} style={styles.battery} />
+              <Text style={styles.batteryTitle1}>Battery 90%</Text>
+              <Text style={styles.batteryTitle2}>Range 270km</Text>
+            </View>
+          </View>
+          <Image source={require('../assets/Background_with_pattern.png')} style={styles.backgroundImage} />
+          <Image source={require("../assets/Car_with_shadow.png")} resizeMode="contain" style={styles.mainImage} />
+        </View>
+        <View style={styles.container2}>
+          <View style={styles.controlContainer}>
+
+            <View style={styles.controlView}>
+              <Text style={styles.controlText}>CABIN CLIMATE</Text>
+              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet)}>
+                <Image source={require('../assets/Cabin_Climate.png')} style={styles.control} />
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.controlView}>
+              <Text style={styles.controlText}>SECURITY</Text>
+              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet)}>
+                <Image source={require('../assets/Security.png')} style={styles.control} />
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.controlView}>
+              <Text style={styles.controlText}>CONTROLS</Text>
+              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet)}>
+                <Image source={require('../assets/Controls.png')} style={styles.control} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-        <Image source={require('../assets/Background_with_pattern.png')} style={styles.backgroundImage} />
-        <Image source={require("../assets/Car_with_shadow.png")} resizeMode="contain" style={styles.mainImage} />
+        {showSheet &&
+          <View style={styles.container3}>
+            <Text>3</Text>
+          </View>
+        }
+        <Toolbar />
       </View>
-      <View style={styles.container2}>
-        <View style={styles.controlContainer}>
-
-          <View style={styles.controlView}>
-            <Text style={styles.controlText}>CABIN CLIMATE</Text>
-            <TouchableOpacity onPress={() => setShowSheet(!showSheet)}>
-              <Image source={require('../assets/Cabin_Climate.png')} style={styles.control} />
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.controlView}>
-            <Text style={styles.controlText}>SECURITY</Text>
-            <TouchableOpacity onPress={() => setShowSheet(!showSheet)}>
-              <Image source={require('../assets/Security.png')} style={styles.control} />
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.controlView}>
-            <Text style={styles.controlText}>CONTROLS</Text>
-            <TouchableOpacity onPress={() => setShowSheet(!showSheet)}>
-              <Image source={require('../assets/Controls.png')} style={styles.control} />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-      {showSheet &&
-        <View style={styles.container3}>
-          <Text>3</Text>
-        </View>
-      }
-      <Toolbar />
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
