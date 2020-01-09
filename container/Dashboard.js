@@ -309,7 +309,8 @@ const styles = StyleSheet.create({
   },
   temp: {
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    height: '100%'
   },
   arrow: {
     resizeMode: 'contain',
