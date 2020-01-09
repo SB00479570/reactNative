@@ -7,7 +7,12 @@ export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showSheet: false };
+    this.state = {
+      showSheet: false,
+      type: '',
+      response: {},
+      temp: 23,
+    };
   }
 
   componentDidMount() {
@@ -17,25 +22,38 @@ export default class Dashboard extends React.Component {
         'Authorization': 'Bearer NGID_1010',
         'Content-Type': 'application/json',
       },
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        alert('success');
-        console.log('responseJson', responseJson);
-        //return responseJson.movies;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    }).then((response) => {
+      const responseData = response.json();
+      if (response.status == 200) {
+        return responseData.then((data) => this.setState({ response: data }));
+      } else {
+        throw new Error('Server Error!');
+      }
+    });
   }
 
-  setShowSheet = (flag) => {
-    this.setState({ showSheet: flag });
+  setShowSheet = (flag, type) => {
+    let prevType = this.state.type;
+    this.setState({ type: type });
+    if (prevType === type || this.state.showSheet === false) {
+      this.setState({ showSheet: flag });
+    }
+  }
+
+  increaseTemp = () => {
+    let newTemp = this.state.temp + 1;
+    this.setState({ temp: newTemp });
+  }
+
+  decreaseTemp = () => {
+    let newTemp = this.state.temp - 1;
+    this.setState({ temp: newTemp });
   }
 
   render() {
 
     //const[showSheet, setShowSheet] = useState(false);
-    const { showSheet } = this.state;
+    const { showSheet, type, response, temp } = this.state;
 
     return (
       <View style={styles.container}>
@@ -59,21 +77,21 @@ export default class Dashboard extends React.Component {
 
             <View style={styles.controlView}>
               <Text style={styles.controlText}>CABIN CLIMATE</Text>
-              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet)}>
+              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet, 'temp')}>
                 <Image source={require('../assets/Cabin_Climate.png')} style={styles.control} />
               </TouchableOpacity>
             </View>
 
             <View style={styles.controlView}>
               <Text style={styles.controlText}>SECURITY</Text>
-              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet)}>
+              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet, 'security')}>
                 <Image source={require('../assets/Security.png')} style={styles.control} />
               </TouchableOpacity>
             </View>
 
             <View style={styles.controlView}>
-              <Text style={styles.controlText}>CONTROLS</Text>
-              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet)}>
+              <Text style={styles.controlText}>CAR DETAILS</Text>
+              <TouchableOpacity onPress={() => this.setShowSheet(!showSheet, 'details')}>
                 <Image source={require('../assets/Controls.png')} style={styles.control} />
               </TouchableOpacity>
             </View>
@@ -81,7 +99,58 @@ export default class Dashboard extends React.Component {
         </View>
         {showSheet &&
           <View style={styles.container3}>
-            <Text>3</Text>
+            <Image source={require('../assets/UpArrow.png')} style={styles.upArrow} />
+            {type === 'temp' &&
+              <View style={styles.interiorTemp}>
+                <View style={styles.interiorTempHeading}>
+                  <Text>INTERIOR TEMPERATURE</Text>
+                </View>
+                <View style={styles.interiorTempContent}>
+                  <TouchableOpacity onPress={this.decreaseTemp}>
+                    <Image source={require('../assets/LeftArrow.png')} style={styles.arrow} />
+                  </TouchableOpacity>
+                  <View style={styles.tempView}>
+                    <Text style={styles.temp}>{temp}&deg;</Text>
+                  </View>
+                  <TouchableOpacity onPress={this.increaseTemp}>
+                    <Image source={require('../assets/RightArrow.png')} style={styles.arrow} />
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.interiorTempFooter}>
+                  <Image source={require('../assets/clouds_sun.png')} style={styles.footerImg} />
+                  <Text style={styles.footerText}>It is currently 23 degrees outside. Lorem ipsum dolor sit confit alors.</Text>
+                </View>
+              </View>
+            }
+            {type === 'details' &&
+              <View style={styles.carDetails}>
+                <View style={styles.carDetailsHeading}>
+                  <Text>YOUR NISSAN ARYIA</Text>
+                </View>
+                <View style={styles.carDetailsContent}>
+                  <View style={styles.leftCol}>
+                    <View style={styles.ColView}>
+                      <Text style={styles.detailsText1}>Model &amp; Year</Text>
+                      <Text style={styles.detailsText2}>{response.vehicle_list[0].model}-{response.vehicle_list[0].model_year}</Text>
+                    </View>
+                    <View style={styles.ColView}>
+                      <Text style={styles.detailsText1}>Transmission Type</Text>
+                      <Text style={styles.detailsText2}>{response.vehicle_list[0].transmission_type}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.rightCol}>
+                    <View style={styles.ColView}>
+                      <Text style={styles.detailsText1}>Purchase Date</Text>
+                      <Text style={styles.detailsText2}>{response.vehicle_list[0].purchase_date[0]}-{response.vehicle_list[0].purchase_date[1]}-{response.vehicle_list[0].purchase_date[2]}</Text>
+                    </View>
+                    <View style={styles.ColView}>
+                      <Text style={styles.detailsText1}>Color</Text>
+                      <Text style={styles.detailsText2}>{response.vehicle_list[0].color}</Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            }
           </View>
         }
         <Toolbar />
@@ -214,6 +283,91 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 15,
     resizeMode: 'contain'
+  },
+  interiorTemp: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20
+  },
+  interiorTempContent: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    width: '100%'
+  },
+  interiorTempHeading: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  interiorTempFooter: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  temp: {
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  arrow: {
+    resizeMode: 'contain',
+    height: '70%'
+  },
+  tempView: {
+    flexDirection: 'row',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    resizeMode: 'contain',
+    width: '30%',
+    justifyContent: 'center'
+  },
+  footerText: {
+    fontSize: 10
+  },
+  footerImg: {
+    resizeMode: 'contain',
+    width: '8%',
+    height: '30%',
+  },
+  upArrow: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    resizeMode: 'contain',
+    height: 10,
+    marginTop: 18,
+    marginRight: 8
+  },
+  carDetails: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20
+  },
+  carDetailsHeading: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  carDetailsContent: {
+    flex: 2,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
+  },
+  ColView: {
+    padding: 5
+  },
+  detailsText1: {
+    fontSize: 12,
+    marginVertical: 4
+  },
+  detailsText2: {
+    fontSize: 15,
+    color: '#9b9b9b'
   }
 
 });
