@@ -29,7 +29,7 @@ const AppNavigator = createStackNavigator({
     defaultNavigationOptions: {
       headerShown: false
     },
-    initialRouteName: "Dashboard"
+    initialRouteName: "Home"
   });
 
 const AppContainer = createAppContainer(AppNavigator);
