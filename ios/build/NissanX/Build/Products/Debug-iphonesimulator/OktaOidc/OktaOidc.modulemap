@@ -1,0 +1,12 @@
+module OktaOidc {
+  umbrella header "OktaOidc-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+
+module OktaOidc.Swift {
+  header "/Users/subhrabasu/reactNative/ios/build/NissanX/Build/Products/Debug-iphonesimulator/OktaOidc/Swift Compatibility Header/OktaOidc-Swift.h"
+  requires objc
+}

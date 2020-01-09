@@ -1,0 +1,12 @@
+module OktaSdkBridgeReactNative {
+  umbrella header "OktaSdkBridgeReactNative-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+
+module OktaSdkBridgeReactNative.Swift {
+  header "/Users/subhrabasu/reactNative/ios/build/NissanX/Build/Products/Debug-iphonesimulator/OktaSdkBridgeReactNative/Swift Compatibility Header/OktaSdkBridgeReactNative-Swift.h"
+  requires objc
+}

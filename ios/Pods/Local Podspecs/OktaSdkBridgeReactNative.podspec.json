@@ -1,0 +1,29 @@
+{
+  "name": "OktaSdkBridgeReactNative",
+  "version": "1.3.0",
+  "summary": "Okta OIDC for React Native",
+  "license": "Apache-2.0",
+  "authors": {
+    "name": "developer@okta.com"
+  },
+  "homepage": "https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react-native",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "git": "https://github.com/okta/okta-oidc-js.git",
+    "tag": "@okta/okta-react-native@1.3.0"
+  },
+  "source_files": [
+    "ios/**/*.{h,m,swift}",
+    "packages/okta-react-native/ios/**/*.{h,m,swift}"
+  ],
+  "dependencies": {
+    "React": [
+
+    ],
+    "OktaOidc": [
+
+    ]
+  }
+}

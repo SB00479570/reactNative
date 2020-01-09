@@ -1,0 +1,21 @@
+dependencies: \
+  /Users/subhrabasu/reactNative/ios/build/NissanX/Build/Products/Debug-iphonesimulator/OktaOidc/OktaOidc.modulemap \
+  /Users/subhrabasu/reactNative/ios/build/NissanX/Build/Products/Debug-iphonesimulator/OktaSdkBridgeReactNative/OktaSdkBridgeReactNative.modulemap \
+  /Users/subhrabasu/reactNative/ios/NissanX/main.m \
+  /Users/subhrabasu/reactNative/ios/NissanX/AppDelegate.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMReactNativeAdapter/UMModuleRegistryAdapter.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/React-Core/React/RCTBridgeModule.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/React-Core/React/RCTDefines.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/React-Core/React/RCTInspectorDevServerHelper.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/React-Core/React/RCTPackagerConnection.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMModuleRegistryProvider.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMModuleRegistry.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMInternalModule.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMDefines.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMExportedModule.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMViewManager.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMModuleRegistryDelegate.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMSingletonModule.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/React-Core/React/RCTBridgeDelegate.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/React-Core/React/RCTJavaScriptLoader.h \
+  /Users/subhrabasu/reactNative/ios/Pods/Headers/Public/UMCore/UMAppDelegateWrapper.h

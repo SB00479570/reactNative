@@ -1,0 +1,22 @@
+version: "Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
+options: "2e31f4cb34fcb1647aa46d43bd428858"
+build_time: [1578511147, 410828000]
+inputs:
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OIDAuthorizationService+Okta.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OIDAuthState+Okta.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidc+SignOut.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidc.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/Tasks/OktaOidcAuthenticate.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcConfig.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcEndpoint.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcError.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcKeychain.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/Tasks/OktaOidcMetadataDiscovery.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcRestApi.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/Tasks/OktaOidcSignIn.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/Tasks/OktaOidcSignOut.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcStateManager.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/Tasks/OktaOidcTask.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/Tasks/OktaOidcUserSessionTask.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaOidcUtils.swift": [1578434762, 0]
+  "/Users/subhrabasu/reactNative/ios/Pods/OktaOidc/Okta/OktaOidc/OktaSignOutOptions.swift": [1578434762, 0]
